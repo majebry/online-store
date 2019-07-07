@@ -35,5 +35,9 @@
             {{-- Specifying a section to embed another view code inside it --}}
             @yield('content')
         </div>
+
+        <footer class="text-muted text-center bg-dark py-5">
+            tec-camp 2019
+        </footer>
     </body>
 </html>

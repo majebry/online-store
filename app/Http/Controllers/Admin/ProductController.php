@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use \App\Product;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
+use App\Category;
 
 class ProductController extends Controller
 {
@@ -13,13 +16,16 @@ class ProductController extends Controller
         $products = Product::all();
 
         // Append retrieved products to a view, and return that view as a response
-        return view('products.index')->with('products', $products);
+        return view('admin.products.index')->with('products', $products);
     }
 
     public function create()
     {
+        // Getting categories from database
+        $categories = Category::all();
+
         // Return view contains a form that let's the user add product details and submit
-        return view('products.create');
+        return view('admin.products.create')->with('categories', $categories);
     }
 
     public function store()
@@ -29,17 +35,25 @@ class ProductController extends Controller
         // Instantiate a new product (object) from the Model Class "Product"
         $new_product = new Product;
 
+        // Upload the image and return the path to a var
+        $image_path = request()->file('image')->store('images', 'public');
+
         // Specifying the new product object properties, according to the data received from the POST request
         $new_product->name = request()->name;
         $new_product->price = request()->price;
-        $new_product->image = ''; // For now we are storing an empty value for the image
+        $new_product->image = $image_path; // For now we are storing an empty value for the image
         $new_product->description = request()->description;
 
+
         // Saving our new product to the database
-        $new_product->save();
+        // $new_product->save();
+
+        $category_id = request()->category_id;
+
+        Category::find($category_id)->products()->save($new_product);
 
         // Redirecting to the products home page
-        return redirect('products');
+        return redirect('admin/products');
     }
 
     public function destroy($id)
@@ -52,6 +66,6 @@ class ProductController extends Controller
         $product->delete();
 
         // Redirecting to the products home page
-        return redirect('products');
+        return redirect('admin/products');
     }
 }

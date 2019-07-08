@@ -15,6 +15,8 @@ class AddCategoryIdToProductsTable extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->bigInteger('category_id')->unsigned();
+
+            $table->string('name');
         });
     }
 

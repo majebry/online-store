@@ -1,7 +1,8 @@
-@extends('layouts.master')
+@extends('admin.layouts.app')
 
 @section('content')
 
+<a href="{{  url('admin/categories/create') }}" class="btn btn-primary">Add new Category</a>
 <table class="table">
     <tr>
         <th>ID</th>
@@ -13,7 +14,7 @@
             <td>{{ $category->id }}</td>
             <td>{{ $category->name }}</td>
             <td>
-                <a href="{{ url('categories/' . $category->id . '/edit') }}" class="btn btn-warning">Edit</a>
+                <a href="{{ url('admin/categories/' . $category->id . '/edit') }}" class="btn btn-warning">Edit</a>
 
                 <a href="" class="btn btn-danger">Delete</a>
 
@@ -22,4 +23,4 @@
     @endforeach
 </table>
 
-@endsection;
+@endsection

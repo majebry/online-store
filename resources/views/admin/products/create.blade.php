@@ -1,5 +1,5 @@
 {{-- Loading a parent layout view --}}
-@extends('layouts.master')
+@extends('admin.layouts.app')
 
 {{-- Embedding a code inside specific section defined in the parent layout view --}}
 @section('content')
@@ -9,10 +9,17 @@
             <h2>Add New Product</h2>
         </div>
         <div class="card-body">
-        <form action="{{ url('products') }}"  enctype="multipart/form-data" method="post">
+        <form action="{{ url('admin/products') }}"  enctype="multipart/form-data" method="post">
             @csrf
                 <label>Name</label>
                 <input type="text" name="name" class="form-control">
+
+                <label>Category</label>
+                <select name="category_id" class="form-control">
+                    @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name}}</option>
+                    @endforeach
+                </select>
 
                 <label>Price</label>
                 <input type="number" name="price" class="form-control">

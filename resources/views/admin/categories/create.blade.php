@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('admin.layouts.app')
 
 @section('content')
 <form action="{{ url('categories') }}" method="post">

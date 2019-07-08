@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use \App\Category;
+use \App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
@@ -13,13 +14,13 @@ class CategoryController extends Controller
         $categories = Category::all();
 
         // Returning a view while sending categories data to it
-        return view('categories.index')->with('categories', $categories);
+        return view('admin.categories.index')->with('categories', $categories);
     }
 
     public function create()
     {
         // returning a view contains a form that let's the user submit new category
-        return view('categories.create');
+        return view('admin.categories.create');
     }
 
     public function store()
@@ -30,14 +31,14 @@ class CategoryController extends Controller
         $category->save();
 
         // Redirecting to the categories list page
-        return redirect('categories');
+        return redirect('admin/categories');
     }
 
     public function edit($id)
     {
         // returning a view contains a form that let's the user edit a specific category
         // based on the id givin in the URI
-        return view('categories.edit')->with('category', Category::find($id));
+        return view('admin.categories.edit')->with('category', Category::find($id));
     }
 
     public function update($id)
@@ -48,6 +49,6 @@ class CategoryController extends Controller
         $category->save();
 
         // Redirecting to the categories list page
-        return redirect('categories');
+        return redirect('admin/categories');
     }
 }

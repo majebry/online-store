@@ -30,6 +30,14 @@ class ProductController extends Controller
 
     public function store()
     {
+        request()->validate([
+            'name'  =>  'required|min:3',
+            'category_id'   =>  'required|integer|exists:categories,id',
+            'price' =>  'required|integer',
+            'image' =>  'required|image',
+            'description'   =>  'required|string'
+        ]);
+
         // "request()->name" you can think of it as "$_POST['name']"
 
         // Instantiate a new product (object) from the Model Class "Product"

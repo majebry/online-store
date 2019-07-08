@@ -1,6 +1,10 @@
 <?php
 
 Route::group(['namespace' => 'Customer'], function() {
+
+    // Products Routes:
+    Route::get(     'products',         'ProductController@index');
+
     Route::get('/', 'HomeController@index')->name('customer.dashboard');
 
     // Login

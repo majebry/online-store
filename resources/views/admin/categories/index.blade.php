@@ -2,7 +2,10 @@
 
 @section('content')
 
-<a href="{{  url('admin/categories/create') }}" class="btn btn-primary">Add new Category</a>
+<a href="{{  url('admin/categories/create') }}" class="btn btn-primary mb-4">Add new Category</a>
+
+@if ($categories->count())
+
 <table class="table">
     <tr>
         <th>ID</th>
@@ -22,5 +25,9 @@
         </tr>
     @endforeach
 </table>
+
+@else
+<div class="alert alert-warning">No Data</div>
+@endif
 
 @endsection

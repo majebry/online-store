@@ -9,7 +9,7 @@
         <div class="col-xl-3 col-lg-6">
             <div class="card mb-4">
 
-                <img src="product_images/casual-mens-outerwear.jpg" alt="" class="card-img-top">
+            <img src="{{ asset($product->image ) }}" alt="" class="card-img-top">
 
                 <div class="card-body">
                 <h3 class="card-title">{{ $product->name }}</h3>
@@ -20,15 +20,8 @@
                 </div>
 
                 <div class="card-footer text-warning">
+                    <div class="span text-muted text-sm">{{ $product->category->name }}</div>
                     &#9733; &#9733; &#9733; &#9733; &#9734;
-
-                <div class="text-right"><button onclick="document.getElementById('delete-form-{{ $product->id }}').submit()" class="btn btn-danger btn-sm">Delete</button></div>
-
-                <form style="display: none;" id="delete-form-{{ $product->id }}" action="{{ url('products/' . $product->id) }}" method="post">
-                    @csrf
-                    {{ method_field('DELETE') }}
-                    <input type="submit">
-                </form>
                 </div>
             </div>
           </div>

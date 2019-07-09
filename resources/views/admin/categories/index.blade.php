@@ -19,8 +19,11 @@
             <td>
                 <a href="{{ url('admin/categories/' . $category->id . '/edit') }}" class="btn btn-warning">Edit</a>
 
-                <a href="" class="btn btn-danger">Delete</a>
-
+                <form action="{{ url("admin/categories/{$category->id}") }}" method="post" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
             </td>
         </tr>
     @endforeach

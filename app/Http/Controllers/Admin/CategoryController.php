@@ -51,4 +51,11 @@ class CategoryController extends Controller
         // Redirecting to the categories list page
         return redirect('admin/categories');
     }
+
+    public function destroy($id)
+    {
+        Category::find($id)->delete();
+
+        return redirect('admin/categories');
+    }
 }

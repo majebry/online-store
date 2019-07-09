@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->double('price');
             $table->string('image');
-            $table->text('description');
+            $table->text('description')->nullable();
 
             $table->timestamps();
         });

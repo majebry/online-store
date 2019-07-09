@@ -9,10 +9,14 @@ Route::namespace('Admin')
     Route::get(     'categories',           'CategoryController@index');
     Route::get(     'categories/{id}/edit', 'CategoryController@edit');
     Route::patch(   'categories/{id}',      'CategoryController@update');
+    Route::delete(  'categories/{id}',      'CategoryController@destroy');
 
     Route::get(     'products/create',  'ProductController@create');
     Route::post(    'products',         'ProductController@store');
     Route::get(     'products',         'ProductController@index');
+    Route::delete(  'products/{id}',    'ProductController@destroy');
+    Route::get(     'products/{id}/edit', 'ProductController@edit');
+    Route::patch(   'products/{id}',    'ProductController@update');
     Route::delete(  'products/{id}',    'ProductController@destroy');
 });
 

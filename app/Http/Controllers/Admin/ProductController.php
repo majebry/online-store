@@ -78,7 +78,6 @@ class ProductController extends Controller
             'name'  =>  'required',
             'image' =>  'image',
             'price' =>  'required',
-            'description'   =>  'required'
         ]);
 
         $product = Product::find($id);

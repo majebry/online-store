@@ -1,6 +1,9 @@
 <?php
 
+Route::post('cart', 'API\V1\Customer\CartController@store');
+
 Route::group(['namespace' => 'Customer'], function() {
+
 
     // Products Routes:
     Route::get(     'products',         'ProductController@index');

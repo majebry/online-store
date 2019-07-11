@@ -53,6 +53,6 @@ class ProductController extends Controller
 
         // $products->whereDoesntHave('category');
 
-        return response()->json($products);
+        return response()->json($products->get());
     }
 }

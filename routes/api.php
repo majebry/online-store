@@ -19,3 +19,15 @@ use Illuminate\Http\Request;
 
 // api/products
 Route::get('v1/products', 'API\V1\ProductController@index');
+
+Route::middleware('api_customer')->group(function() {
+    Route::post('cart', 'CartController@store');
+
+    // api/auth/login
+    Route::prefix('auth')->namespace('API\V1\Customer')->group(function() {
+        Route::post('login', 'AuthController@login');
+        Route::post('logout', 'AuthController@logout');
+        Route::post('refresh', 'AuthController@refresh');
+        Route::post('me', 'AuthController@me');
+    });
+});

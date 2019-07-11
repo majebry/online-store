@@ -56,6 +56,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'api_customer' => [
+            'driver'    =>  'jwt',
+            'provider'  =>  'customers'
+        ]
     ],
 
     /*

@@ -18,6 +18,8 @@ Route::namespace('Admin')
     Route::get(     'products/{id}/edit', 'ProductController@edit');
     Route::patch(   'products/{id}',    'ProductController@update');
     Route::delete(  'products/{id}',    'ProductController@destroy');
+
+    Route::get('orders', 'OrderController@index');
 });
 
 Route::group(['namespace' => 'Admin'], function() {

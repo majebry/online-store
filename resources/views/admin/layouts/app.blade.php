@@ -40,6 +40,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('admin/products') }}">Products</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('admin/orders') }}">Orders</a>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

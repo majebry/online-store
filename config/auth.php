@@ -87,8 +87,8 @@ return [
         ],
 
         'customers' => [
-            'driver' => 'eloquent',
-            'model'  => App\Customer::class,
+            'driver' => 'eloquent',  // 'database'
+            'model'  => App\Customer::class,  //'table' => 'customers'
         ],
 
         'users' => [

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\API\V1\Customer;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class AuthController extends Controller
 {
@@ -15,7 +15,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api_customer', ['except' => ['login']]);
     }
 
     /**
@@ -27,7 +27,7 @@ class AuthController extends Controller
     {
         $credentials = request(['email', 'password']);
 
-        if (! $token = auth()->attempt($credentials)) {
+        if (! $token = auth('api_customer')->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
@@ -41,7 +41,9 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        $response = auth('api_customer')->user()->cart;
+dd($response);
+        return response()->json($response);
     }
 
     /**
@@ -51,7 +53,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        auth()->logout();
+        auth('api_customer')->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
     }
@@ -63,7 +65,7 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh());
+        return $this->respondWithToken(auth('api_customer')->refresh());
     }
 
     /**
@@ -78,10 +80,7 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth('api_customer')->factory()->getTTL() * 60
         ]);
     }
 }
-
-
-

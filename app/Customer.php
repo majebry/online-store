@@ -79,4 +79,14 @@ class Customer extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function cart()
+    {
+        return $this->hasOne('App\Cart');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
+    }
 }

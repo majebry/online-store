@@ -2,11 +2,13 @@
     <head>
         <link rel="stylesheet" href="{{ url('css/app.css') }}">
         <title>OnlineStore</title>
+        <link rel="stylesheet" href="{{ asset('css/simple-rating.css') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
                 <div class="navbar-brand">
-                    <img src="logo.png" alt="" height="68px">
+                    <img src="{{ asset('images/logo.png') }}" alt="" height="68px">
                     <span>OnlineStore.ly</span>
                 </div>
 

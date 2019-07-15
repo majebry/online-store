@@ -7,6 +7,7 @@ Route::group(['namespace' => 'Customer'], function() {
 
     // Products Routes:
     Route::get(     'products',         'ProductController@index');
+    Route::post('rate/{product_id}', 'ProductController@rate');
 
     Route::get('/', 'HomeController@index')->name('customer.dashboard');
 

@@ -21,11 +21,27 @@
 
                 <div class="card-footer text-warning">
                     <div class="span text-muted text-sm">{{ $product->category->name }}</div>
-                    &#9733; &#9733; &#9733; &#9733; &#9734;
+
+                    <input class="rating" data-id="{{ $product->id }}">
+
                 </div>
             </div>
           </div>
     @endforeach
 </div>
 
+
+        <!-- jQuery first, then Tether, then Bootstrap JS. -->
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+
+        <script src="{{ asset("js/simple-rating.js") }}"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.rating').rating();
+            });
+        </script>
 @endsection

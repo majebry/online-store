@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function index()
     {
         // Let the model get us all products from the database
-        $products = Product::latest()->get();
+        $products = Product::latest()->paginate();
 
         // Append retrieved products to a view, and return that view as a response
         return view('admin.products.index')->with('products', $products);

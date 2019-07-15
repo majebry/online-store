@@ -32,6 +32,7 @@
             </tr>
         @endforeach
     </table>
+    {{ $products->links() }}
 @else
 <div class="alert alert-warning">No Data!</div>
 @endif

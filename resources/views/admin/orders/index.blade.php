@@ -14,9 +14,9 @@
                 <td>{{ $order->id }}</td>
                 <td>{{ $order->customer->name }}</td>
                 <td>{{ $order->items()->sum('price') }}</td>
-                <td>{{ $order->created_at }}</td>
+                <td>{{ $order->created_at->diffForHumans() }}</td>
                 <td>
-                    <a href="{{ url('admin/orders/{id}') }}" class="btn btn-info">View Items</a>
+                    <a href="{{ url('admin/orders/' . $order->id) }}" class="btn btn-info">View Items</a>
                 </td>
             </tr>
         @endforeach

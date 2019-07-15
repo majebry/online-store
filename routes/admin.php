@@ -20,6 +20,7 @@ Route::namespace('Admin')
     Route::delete(  'products/{id}',    'ProductController@destroy');
 
     Route::get('orders', 'OrderController@index');
+    Route::get('orders/{id}', 'OrderController@show');
 });
 
 Route::group(['namespace' => 'Admin'], function() {

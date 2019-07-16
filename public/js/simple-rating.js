@@ -28,6 +28,12 @@ class simpleRating{
       .attr('type','hidden')
       .after(html);
 
+    // ------------------------------------------------------
+    // Catching the initial value of the rating and refreshing the rating stars
+    this.rating = $(this.obj).attr('value');
+    this.refresh();
+    // ------------------------------------------------------
+
     $(this.obj).next().children().click({classObj:this},function(e){
       e.data.classObj.rate(this);
     });
@@ -47,8 +53,12 @@ class simpleRating{
     this.rating=rating;
     this.refresh();
 
+    // ------------------------------------------------------
+    // Catching the product_id from the input attributes and send it to our
+    // custom function postRating() along with the entered rating
     var product_id = $(obj).parent().prev().attr('data-id');
     this.postRating(product_id, rating);
+    // ------------------------------------------------------
   }
 
   refresh(){
@@ -69,10 +79,13 @@ class simpleRating{
     }
   }
 
+  // ------------------------------------------------------
+  // We added this function to send the rating value and the product_id to our backend
+  // using JQuery post request
   postRating(product_id, rating) {
-
-      $.post('/customer/rate/' + product_id, {rating: rating}, function(data) {
-          console.log(data);
-      });
+    $.post('/customer/rate/' + product_id, {rating: rating}, function(data) {
+        // console.log(data);
+    });
   }
+  // ------------------------------------------------------
 }

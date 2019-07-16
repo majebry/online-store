@@ -21,10 +21,13 @@ class ProductController extends Controller
 
     public function rate($id)
     {
-        $rating = new Rating;
-        $rating->rating = request()->rating;
-        $rating->customer_id = Customer::first()->id;
+        if (auth('customer')->check()) {
+            $rating = new Rating;
+            $rating->rating = request()->rating;
+            $rating->customer_id = auth('customer')->id();
+            return Product::find($id)->ratings()->save($rating);
+        }
 
-        return Product::find($id)->ratings()->save($rating);
+        return '';
     }
 }

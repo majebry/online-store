@@ -22,7 +22,7 @@
                 <div class="card-footer text-warning">
                     <div class="span text-muted text-sm">{{ $product->category->name }}</div>
 
-                    <input class="rating" data-id="{{ $product->id }}">
+                    <input class="rating" data-id="{{ $product->id }}" value="{{ $product->averageRating }}">
 
                 </div>
             </div>

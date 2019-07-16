@@ -32,8 +32,8 @@ Route::group(['namespace' => 'Admin'], function() {
     Route::post('logout', 'Auth\LoginController@logout')->name('admin.logout');
 
     // Register
-    Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('admin.register');
-    Route::post('register', 'Auth\RegisterController@register');
+    // Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('admin.register');
+    // Route::post('register', 'Auth\RegisterController@register');
 
     // Passwords
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');

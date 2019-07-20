@@ -20,10 +20,12 @@ Route::prefix('v1')->namespace('API\V1')->group(function() {
         Route::post('auth/login', 'AuthController@login');
         Route::post('auth/logout', 'AuthController@logout');
 
-        Route::post('cart-items', 'CartItemController@store'); // POST api/cart-items
-        Route::get('cart-items', 'CartItemController@index');
-        Route::delete('cart-items/{id}', 'CartItemController@destroy');
+        Route::middleware('auth:api_customer')->group(function() {
+            Route::post('cart-items', 'CartItemController@store');
+            Route::get('cart-items', 'CartItemController@index');
+            Route::delete('cart-items/{id}', 'CartItemController@destroy');
 
-        Route::post('orders/checkout', 'OrderController@checkout');
+            Route::post('orders/checkout', 'OrderController@checkout');
+        });
     });
 });
